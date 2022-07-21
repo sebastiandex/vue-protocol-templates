@@ -30,6 +30,7 @@ export default {
     addTemplate(data) {
       console.log({data})
       this.$store.commit('add', data)
+      this.$store.getters.getTemplate(1)
     },
   },
   props: {

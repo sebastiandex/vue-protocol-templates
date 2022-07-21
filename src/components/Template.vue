@@ -1,7 +1,6 @@
 <template>
     <div>
-      {{item.label}}
-      <input>
+      <input :value="item.label" @input="(e) => updateLabel(e, item.id)">
       <button @click="toggle">{{ isOpen ? '-' : '+' }}</button>
       <TemplateItem
           v-show="item.children && isOpen"
@@ -30,6 +29,10 @@ export default {
   methods: {
     toggle: function() {
       this.isOpen = !this.isOpen;
+    },
+    updateLabel (e, id) {
+      console.log({id})
+      this.$store.commit('updateLabel', id, e.target.value)
     }
   }
 }
@@ -37,7 +40,11 @@ export default {
 
 
 <style>
+input {
+  background-color: greenyellow;
+  width: max-content;
+}
   .child {
-    padding-left: 25px;
+    padding-left: 50px;
   }
 </style>

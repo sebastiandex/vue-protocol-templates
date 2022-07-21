@@ -1,6 +1,7 @@
 # vue-protocol-templates
+Vue, Vuex, Vue-Router
 
-## Project setup
+## Установка зависимостей
 ```
 yarn install
 ```
