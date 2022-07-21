@@ -15,11 +15,24 @@ export default createStore({
                     }
                 ]
             }
+        ],
+        templatesDB: [
+            {label: 'Первый', id: 1, children: [6, 7, 8]},
+            {label: 'Второй ', id: 2, children: []},
+            {label: 'Тры', id: 3, children: []},
+            {label: 'Четыре', id: 4, children: []},
+            {label: 'Пять', id: 5, children: []},
+            {label: 'Ребенок 2 уровня(1)', id: 6, children: []},
+            {label: 'Ребенок 2 уровня(2)', id: 7, children: []},
+            {label: 'Ребенок 2 уровня(3)', id: 8, children: [9]},
+            {label: 'Ребенок 3 уровня(1)', id: 9},
+
         ]
     },
     getters: {
-        getCount2(state) {
-            return state.counter * 2;
+        getTemplate: (state) => (id) => {
+            console.log('getTemplate', id);
+            console.log(232, state.templatesDB.filter((item) => item.id === id))
         }
     },
     mutations: {
@@ -36,6 +49,13 @@ export default createStore({
         },
         remove(state, data) {
             console.log('remove', state, data);
+        },
+        // логично было бы отправить на бек айдишник шаблона и измененные данные, но так как бека нет
+        // будем заниматься поисками элемента
+
+        updateLabel: (state) => (id, label) => {
+            console.log('updateLabelSTORE', id, label);
+            state.templatesDB.filter((item) => item.id === id).label = label
         }
     },
     actions: {},
