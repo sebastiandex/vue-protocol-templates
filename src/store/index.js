@@ -2,16 +2,17 @@ import {createStore} from "vuex";
 
 export default createStore({
     state: {
+        protocol: {description: '3434', recommendations: '5555', conclusion: '666'},
         templatesDB: [
             {label: 'Первый', id: 1, level: 1, children: [6, 7]},
             {label: 'Второй ', id: 2, level: 1, children: []},
-            {label: 'Тры', id: 3, level: 1, children: []},
+            {label: 'Третий', id: 3, level: 1, children: []},
             {label: 'Четыре', id: 4, level: 1, children: []},
             {label: 'Пять', id: 5, level: 1, children: []},
             {label: 'Ребенок 2 уровня(1)', level: 2, id: 6, parentId: 1, children: []},
             {label: 'Ребенок 2 уровня(2)', level: 2, id: 7, parentId: 1, children: [8, 9]},
-            {label: 'Ребенок 2 уровня(3)', level: 3, id: 8, parentId: 7},
-            {label: 'Ребенок 3 уровня(1)', level: 3, id: 9, parentId: 7}
+            {label: 'Ребенок 3 уровня(1)', level: 3, id: 8, parentId: 7},
+            {label: 'Ребенок 3 уровня(2)', level: 3, id: 9, parentId: 7}
         ],
         templateTrees: [1, 2, 3, 4, 5]
     },
@@ -57,6 +58,16 @@ export default createStore({
             updateTemplate(state, {id, field, e})
             {
                 return this.getters.findTemplate(id)[field] = e.target.value;
+            },
+
+            updateDescription(state, value) {
+                state.protocol.description = value;
+            },
+            updateRecommendations(state, value) {
+                state.protocol.recommendations = value;
+            },
+            updateConclusion(state, value) {
+                state.protocol.conclusion = value;
             }
         },
         actions: {},

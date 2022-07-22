@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div style="text-align: center">
     <h3>Перейдите в необходимый раздел:</h3>
     <ul>
       <li>

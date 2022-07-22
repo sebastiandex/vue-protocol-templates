@@ -1,5 +1,5 @@
 <template>
-    <div>Редактор шаблонов</div>
+    <h3>Редактор шаблонов</h3>
 
       <TemplateItem
           v-for="(id) in templates"
@@ -31,17 +31,12 @@ export default {
       return this.$store.getters.getTemplate(id)
     },
     addTemplate(data) {
-      console.log({data})
       this.$store.commit('add', data)
-    },
-  },
-  props: {
-    msg: String
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
