@@ -1,25 +1,22 @@
 # vue-protocol-templates
-Vue, Vuex, Vue-Router
+Тестовое задание по Vue
 
 ## Установка зависимостей
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Запуск проекта
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Проверить успешно ли проходит сборка
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### Прогон линтером
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
