@@ -1,16 +1,16 @@
 <template>
-    <div>Template Editor</div>
+    <div>Редактор шаблонов</div>
 
       <TemplateItem
-          v-for="(template, index) in templates"
-          :key="index"
-          :item="template"
+          v-for="(id) in templates"
+          class="coreTemplate"
+          :key="id"
+          :item="getTemplate(id)"
           @make-folder="$emit('make-folder', $event)"
           @add-item="$emit('add-item', $event)"
       >
       </TemplateItem>
-      <li class="add" @click="$emit('add-item', template)">+</li>
-  <button v-on:click="addTemplate( {label: 'Второй', children: []})">Add Template</button>
+  <button v-on:click="addTemplate( null)">Создать шаблон</button>
   <router-view/>
 
 </template>
@@ -23,14 +23,16 @@ export default {
   components: {TemplateItem},
   data() {
     return {
-      templates: this.$store.state.templates
+      templates: this.$store.state.templateTrees
     }
   },
   methods: {
+    getTemplate(id) {
+      return this.$store.getters.getTemplate(id)
+    },
     addTemplate(data) {
       console.log({data})
       this.$store.commit('add', data)
-      this.$store.getters.getTemplate(1)
     },
   },
   props: {
@@ -54,5 +56,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.coreTemplate {
+  margin-bottom: 10px;
 }
 </style>
