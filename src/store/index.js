@@ -27,7 +27,7 @@ export default createStore({
     },
     mutations: {
         add(state, id) {
-            // Конечно, не самый изящный способ создать айдишник, но предположим что на беке все будет проверяться
+            // Конечно, не самый изящный способ создать айдишник, но для наших целей подойдёт
             const generatedId = Math.random() * 100;
 
                 const templateToAdd = id ? this.getters.findTemplate(id) : null;

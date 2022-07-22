@@ -3,8 +3,6 @@ import Home from "@/components/Home";
 import TemplateEditor from "@/components/TemplateEditor";
 import Protocols from "@/components/Protocols";
 
-// Можно было обойтись без роутера, но предположим что структура в будущем усложнится и сразу сделаем нормально
-
 const routes = [
     {
         path: '/',

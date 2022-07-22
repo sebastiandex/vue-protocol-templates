@@ -69,11 +69,6 @@ export default {
 
 <style>
 .modal {
-  /*position: absolute;*/
-  /*width: max-content;*/
-  /*right: -90px;*/
-  /*top: -5px;*/
-  display: grid;
   margin-left: 50px;
   padding: 10px;
   border: 1px solid black;
@@ -83,10 +78,8 @@ export default {
   display: grid;
   margin-bottom: 5px;
   position: relative;
-  /*width: 300px;*/
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 .modalItem:hover {
   cursor: pointer;
