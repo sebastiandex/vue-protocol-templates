@@ -1,4 +1,5 @@
 <template>
+  <header>
   <router-link
       v-for="(item, index) in links"
       :to="item.link"
@@ -12,6 +13,8 @@
       |
     </span>
   </router-link>
+  </header>
+
   <div class="content">
     <router-view/>
   </div>
@@ -50,6 +53,12 @@ export default {
 }
 .content {
   text-align: left;
+  background: #F2F9FF;
+  border-radius: 20px;
+  padding: 25px;
+  margin-top: 20px;
+  width: calc(100% + 120px);
+  height: calc(100% + 135px);
 }
 
 </style>

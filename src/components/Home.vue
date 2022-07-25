@@ -27,7 +27,7 @@ h3 {
 
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 20px;
 }
 
 li {
@@ -36,6 +36,12 @@ li {
 }
 
 a {
+  color: #2D87E2;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 30px 10px;
+}
+a:hover {
   color: #42b983;
 }
 </style>

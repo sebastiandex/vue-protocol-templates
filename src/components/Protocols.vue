@@ -96,7 +96,7 @@ export default {
               fieldName: 'conclusions',
               field: this.conclusions,
               buttonText: 'Выбрать шаблон заключения (двойной клик для выбора)'
-            },
+            }
           ])
     }
   }
@@ -109,5 +109,10 @@ export default {
   position: relative;
   cursor: pointer;
   margin-bottom: 20px;
+}
+textarea {
+  border-radius: 5px;
+  min-height: 100px;
+  min-width: 300px;
 }
 </style>
