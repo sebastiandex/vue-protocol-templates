@@ -57,8 +57,6 @@ export default {
   border-radius: 20px;
   padding: 25px;
   margin-top: 20px;
-  width: calc(100% + 120px);
-  height: calc(100% + 135px);
 }
 
 </style>
