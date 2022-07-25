@@ -1,63 +1,22 @@
 <template>
   <h3>Протокол</h3>
-  <div>
-    <div>
-      <div>Описание</div>
-      <textarea v-model="description"/>
-      <div
-          class="menuButton"
-          v-on:mouseover="toggleModal('firstModal', true)"
-          v-on:mouseleave="toggleModal('firstModal', false)"
-      >
-        Выбрать шаблон описания (двойной клик для выбора)
-        <div v-if="firstModal" style="position: absolute; width: max-content; z-index: 2">
-          <DropdownComponent
-              :show="firstModal"
-              :templates="templates"
-              field='description'
-          />
-        </div>
-      </div>
-
-    </div>
-    <div>
-      <div>Рекомендации</div>
-      <textarea v-model="recommendations"/>
-      <div
-          class="menuButton"
-          v-on:mouseover="toggleModal('secondModal', true)"
-          v-on:mouseleave="toggleModal('secondModal', false)"
-      >
-        Выбрать шаблон рекомендаций (двойной клик для выбора)
-        <div v-if="secondModal" style="position: absolute; width: max-content; z-index: 1">
-          <DropdownComponent
-              :show="secondModal"
-              :templates="templates"
-              field='recommendations'
-          />
-        </div>
-      </div>
-    </div>
-    <div>
-      <div>Заключение</div>
-      <textarea v-model="conclusions"/>
-      <div
-          class="menuButton"
-          v-on:mouseover="toggleModal('thirdModal', true)"
-          v-on:mouseleave="toggleModal('thirdModal', false)"
-      >
-        Выбрать шаблон заключения (двойной клик для выбора)
-        <div v-if="thirdModal" style="position: absolute; width: max-content">
-          <DropdownComponent
-              :show="thirdModal"
-              :templates="templates"
-              field='conclusions'
-          />
-        </div>
+  <div v-for="block in showProtocolBlocks()" v-bind:key="block.fieldName">
+    <div>{{ block.label }}</div>
+    <textarea v-model="block.field"/>
+    <div
+        class="menuButton"
+        v-on:mouseover="toggleModal(block.modalName, true)"
+        v-on:mouseleave="toggleModal(block.modalName, false)"
+    >
+      Выбрать шаблон описания (двойной клик для выбора)
+      <div v-if="block.modal" style="position: absolute; width: max-content; z-index: 1">
+        <DropdownComponent
+            :templates="templates"
+            :field="block.fieldName"
+        />
       </div>
     </div>
   </div>
-
   <router-view/>
 </template>
 
@@ -96,9 +55,9 @@ export default {
   data() {
     return {
       templates: this.$store.state.templateTrees,
-      firstModal: false,
-      secondModal: false,
-      thirdModal: false
+      descriptionModal: false,
+      recommendationsModal: false,
+      conclusionsModal: false
     }
   },
   methods: {
@@ -110,6 +69,35 @@ export default {
     },
     toggleModal(modal, bool) {
       this[modal] = bool;
+    },
+    showProtocolBlocks() {
+      return (
+          [
+            {
+              label: 'Описание',
+              modal: this.descriptionModal,
+              modalName: 'descriptionModal',
+              fieldName: 'description',
+              field: this.description,
+              buttonText: 'Выбрать шаблон описания (двойной клик для выбора)'
+            },
+            {
+              label: 'Рекомендации',
+              modal: this.recommendationsModal,
+              modalName: 'recommendationsModal',
+              fieldName: 'recommendations',
+              field: this.recommendations,
+              buttonText: 'Выбрать шаблон рекомендаций (двойной клик для выбора)'
+            },
+            {
+              label: 'Заключение',
+              modal: this.conclusionsModal,
+              modalName: 'conclusionsModal',
+              fieldName: 'conclusions',
+              field: this.conclusions,
+              buttonText: 'Выбрать шаблон заключения (двойной клик для выбора)'
+            },
+          ])
     }
   }
 }

@@ -1,21 +1,19 @@
 <template>
-    <div class="modal" v-if="showModal">
-      <div
-          class="modalItem"
-          v-for="id in templates"
-          v-bind:key="id"
-          v-on:dblclick.stop="chooseTemplate(getTemplate(id).label)"
-          v-on:mouseover="showChildren(id, $event)"
-      >
-        <span>{{getTemplate(id).label}}</span>
-        <DropdownComponent
-            v-if="showChildren(id)"
-            :templates="getTemplate(id).children"
-            :field="this.field"
-        />
-      </div>
+  <div class="modal">
+    <div
+        class="modalItem"
+        v-for="id in templates"
+        v-bind:key="id"
+        v-on:dblclick.stop="chooseTemplate(getTemplate(id).label)"
+    >
+      <span>{{ getTemplate(id).label }}</span>
+      <DropdownComponent
+          v-if="getTemplate(id).children && getTemplate(id).children.length"
+          :templates="getTemplate(id).children"
+          :field="this.field"
+      />
     </div>
-
+  </div>
 </template>
 
 <script>
@@ -31,13 +29,10 @@ export default {
     }
   },
   methods: {
-    toggle() {
-      this.isOpen = !this.isOpen;
-    },
     deleteTemplate(id) {
       this.$store.commit('remove', id)
     },
-    updateTemplate (id, field, e) {
+    updateTemplate(id, field, e) {
       this.$store.commit('updateTemplate', {id, field, e})
     },
     getTemplate(id) {
@@ -46,7 +41,7 @@ export default {
     addTemplate(id) {
       this.$store.commit('add', id)
     },
-    chooseTemplate(text ) {
+    chooseTemplate(text) {
       if (this.field === 'description') {
         this.$store.commit('updateDescription', text)
       } else if (this.field === 'recommendations') {
@@ -55,12 +50,6 @@ export default {
         this.$store.commit('updateConclusion', text)
       }
 
-    },
-    showChildren(id) {
-      const isChildren = this.getTemplate(id).children;
-      if (isChildren && isChildren.length) {
-        return true
-      }
     }
   }
 }
@@ -74,6 +63,7 @@ export default {
   border: 1px solid black;
   background-color: white;
 }
+
 .modalItem {
   display: grid;
   margin-bottom: 5px;
@@ -81,6 +71,7 @@ export default {
   white-space: nowrap;
   overflow: hidden;
 }
+
 .modalItem:hover {
   cursor: pointer;
 }
