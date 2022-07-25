@@ -2,7 +2,7 @@ import {createStore} from "vuex";
 
 export default createStore({
     state: {
-        protocol: {description: '3434', recommendations: '5555', conclusion: '666'},
+        protocol: {description: '', recommendations: '', conclusion: ''},
         templatesDB: [
             {label: 'Первый', id: 1, level: 1, children: [6, 7]},
             {label: 'Второй ', id: 2, level: 1, children: []},
